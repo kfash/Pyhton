@@ -16,15 +16,17 @@ def Fish (x, y):
     c.create_arc(x-353, y + 32, x + 127, y +532, start=47, extent=-90, style=ARC, outline='black', width=1)
     
 def Update ():
-	dx = 0
-	dy = 5
+	global l
+	global y
+	global dy
+	global dx
 	moveObjectBy(objp1, dx, dy)
 	moveObjectBy(objl2, dx, dy)
 	moveObjectBy(objh3, dx, dy)
-	line(900, 400, 900 + dx, 1000 + dy)
-	global y
+	deleteObject (l)
+	l = line(900, 400, 900, y + 98 + dy)
 	y = y + dy
-	if y >= 900:
+	if y >= 1000:
 		dy = -dy
 	if y <= 380:
 		dy = -dy
@@ -47,13 +49,15 @@ polyline([(530, 1010), (700, 600), (900, 400)])
 penSize(1)
 c.create_oval (650, 1300, 1000, 1550, fill = 'CadetBlue')
 c.create_oval (700, 1350, 1000, 1500, fill = 'SteelBlue')
-Fish (850, 900)
+#Fish (850, 900)
 x = 850
 y = 900
+dy = -5
+dx = 0
 objp1 = c.create_arc(x, y, x + 500, y + 500,start=143, extent=90, style=ARC, outline='black', width=1)
 objl2 = c.create_arc(x+30, y +300,x +130, y + 450, start=245, extent=50, style=ARC, outline='black', width=1)
 objh3 = c.create_arc(x-353, y + 32, x + 127, y +532, start=47, extent=-90, style=ARC, outline='black', width=1)
-line(900, 400, 900, 1000)
+l = line(900, 400, 900, 1000)
 c.create_oval (100, 600, 500, 1500, fill = 'white')
 c.create_oval (280, 500, 500, 630, fill = 'white')
 c.create_oval (380, 890, 600, 1000, fill = 'white')
