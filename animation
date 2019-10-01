@@ -27,13 +27,15 @@ def Mishka ():
 	circle (301, 522, 29)
 	
 def Solnce ():
+	global Sizex, Sizey
+	
 	brushColor("DeepSkyBlue")
 	penColor("lightyellow")
 	penSize(20)
-	circle (700, 250, 150)
+	circle (Sizex*7/10, Sizey*5/36, 150)
 	penSize(1)
 	brushColor("lightyellow")
-	circle (700, 250, 50)
+	circle (Sizex*7/10, Sizey*5/36, 50)
 
 circle (700, 250, 150)
 penSize(1)
@@ -108,6 +110,9 @@ def Update ():
 def keyPressed(event):
   if event.keycode == VK_ESCAPE:
     close()  # закрыть окно
+
+Sizex = 500
+Sizey = 700
      
 rot1=circle(100,100,100)
 rot2=circle(200,100,100)
@@ -116,8 +121,8 @@ j=circle(100,100,100)
 
 c = canvas()
 c.pack()
-canvasSize(1000, 1800)
-windowSize(1000, 1800)
+canvasSize(Sizex, Sizey)
+windowSize(Sizex, Sizey)
 
 brushColor('DeepSkyBlue')
 rectangle(0, 0, 1000, 900)
@@ -159,4 +164,3 @@ onKey(keyPressed)
 onTimer(Update,50)
 
 run()
-
