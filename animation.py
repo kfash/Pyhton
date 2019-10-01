@@ -24,8 +24,6 @@ def Mishka ():
 	c.create_oval (272*Sizex/1000,493*Sizey/1800,33*Sizex/100,551*Sizey/1800, fill = 'white')
 	
 def Solnce ():
-	global Sizex, Sizey
-	
 	brushColor("DeepSkyBlue")
 	penColor("lightyellow")
 	penSize(20)
@@ -33,11 +31,6 @@ def Solnce ():
 	penSize(1)
 	brushColor("lightyellow")
 	circle (Sizex*7/10, Sizey*5/36, 50)
-	c.create_oval (550*Sizex/1000,100,850*Sizex/1000,400)
-	penSize(1)
-	brushColor("lightyellow")
-	c.create_oval (650*Sizex/1000,750,850*Sizex/1000,300,fill="lightyellow")
-	
 
 '''def Fish (x, y):
 	global objp1, objl2, objh3
