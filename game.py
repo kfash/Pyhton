@@ -3,7 +3,7 @@ from random import randrange as rnd, choice
 import time
 
 root = Tk()
-#root.geometry('800x600-0-0')
+root.geometry('800x600-0-0')
 c = Canvas (root, bg ='white')
 colors = ['red', 'blue', 'green', 'yellow', 'black']
 n = 0
@@ -50,20 +50,21 @@ def move ():
 	
 		#print (i)
 	root.after (10, move)
+
 	
-	b
-	
-def change ():
+def change (event):
+	global i
 	i = 1
 	
 def Prove ():
+	global i
 	if (i == 1):
 		c.pack(fill=BOTH, expand=1)
 		new_ball()
 		move()
 		prov()
 	else:
-		root.after (1, prov)
+		root.after (1, Prove)
 	
 def prov ():
 	c.bind('<Button-1>', click)
@@ -78,4 +79,5 @@ b1.bind('<Button-1>', change)
 
 Prove()
 root.mainloop()
+
 
