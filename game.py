@@ -14,6 +14,7 @@ balls = [ball1, ball2, ball3]
 i = 0
 r = 40
 v = 10
+l1 = Label(width = 20, text = n)
 
 def new_ball ():
 	global balls
@@ -34,73 +35,61 @@ def click (event):
 		if ((balls[i][0] - event.x)**2 + (balls[i][1] - event.y)**2 <= (1.5*balls[i][2])**2):
 			n+= 1
 			print(n)
+			l1.config(text = n)
 			
 def move ():
 	global balls
 	for i in range (0, 3):
 		c.move (balls[i][5], balls[i][3], balls[i][4])
-		
 		if ((c.coords(balls[i][5])[0] < 0) or (c.coords(balls[i][5])[2] > 800)):
 			balls[i][3]  = -balls[i][3]
-		
 		if ((c.coords(balls[i][5])[3] > 600) or (c.coords(balls[i][5])[1] < 0)):
 			balls[i][4] = -balls[i][4]
-			
-			
 		balls[i][0] = c.coords(balls[i][5])[0] + balls[i][3]
 		balls[i][1] = c.coords(balls[i][5])[1] + balls[i][3]
-	
-		#print (i)
+	#print (i)
 	root.after (10, move)
 
 	
-def change1 (event):
+def change1 ():
 	global i
 	i = 1
 	
-def change2 (event):
+def change2 ():
 	global i
 	i = 2
 	
-def change21 (event):
-	global j
-	j = 1
+def change21 ():
+	global v, r
+	v = 7
+	r = 60
 
-def change22 (event):
-	global j
-	j = 2
+def change22 ():
+	global v, r
+	v = 10
+	r = 40
 
-def change23 (event):
-	global j
-	j = 3
+def change23 ():
+	global v, r
+	v = 13
+	r = 20
 	
 def Prove ():
-	global i
+	global i, j
 	if (i == 1):
 		c.pack(fill=BOTH, expand=1)
 		new_ball()
 		move()
 		prov()
-	if (i == 2):
-		j = 0
-		b1 = Button (root, text = " Легко")
-		b2 = Button (root, text = "Ноомально")
-		b3 = Button(root, text ="Сложно")
+	elif (i == 2):
+		b1 = Button(root, text='Легко', name='btn21', command=change21)
+		b2 = Button(root, text='Ноомально', name='btn22', command=change22)
+		b3 = Button(root, text='Сложно', name='btn23', command=change23)
 		b1.pack()
 		b2.pack()
 		b3.pack()
-		b1.bind('<Button-21>', change21)
-		b2.bind('<Button-22>', change22)
-		b3.bind('<Button-23>', change23)
-		if (j == 1):
-			v = 7
-			r = 60
-		elif (j == 2):
-			v = 10
-			r = 40	
-		elif (j == 3):
-			v = 13
-			r = 20
+		i = 0
+		root.after (1, Prove)
 	else:
 		root.after (1, Prove)
 	
@@ -116,18 +105,13 @@ def wn1():
     root.geometry('512x256')
     root.config(bg='GRAY')
  
-		
-
-e = Entry (width = 20)
-b1 = Button (root, text = " Начать", command=wn1)
+b1 = Button(root, text='Начать', name='btn1', command=change1)
 #b1.grid(row=0, column=0)
-b2 = Button (root, text = "Сложность", command=wn1)
+b2 = Button(root, text='Сложность', name='btn2', command=change2)
 #b2.grid(row=0, column=0)
-e.pack()
+l1.pack()
 b1.pack()
 b2.pack()
-b1.bind('<Button-1>', change1)
-b2.bind('<Button-2>', change2)
 
 Prove()
 root.mainloop()
