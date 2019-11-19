@@ -1,0 +1,16 @@
+import tkinter as tk
+from random import*
+import time
+import math
+
+
+class magdamage ():
+	def __init__(self, damage, school, image, cost):
+		self.damage = damage
+		self.school = school
+		self.id = image
+		self.cost = cost
+		
+	def fight (self, odj):
+		if (obj)
+		
